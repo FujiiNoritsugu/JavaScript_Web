@@ -37,8 +37,8 @@ function DataDisplay() {
 
   return (
     <ul>
-      {data[0].area.weathers.map((item, index) => (
-        <li key={index}>{item}</li>
+      {data.map((item, index) => (
+        <li key={index}>{JSON.stringify(item)}</li>
       ))}
     </ul>
   );
