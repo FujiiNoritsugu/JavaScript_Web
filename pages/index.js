@@ -73,13 +73,24 @@ function Modal() {
 function ChangeColor() {
   const [color, setColor] = useState("white");
 
+  // マウント時とcolorが変更されたときに実行されます。
+  useEffect(() => {
+    // bodyの背景色を変更します。
+    document.body.style.backgroundColor = color;
+
+    // コンポーネントのアンマウント時に実行されるクリーンアップ関数。
+    return () => {
+      // bodyの背景色を初期状態に戻すことができます。
+      document.body.style.backgroundColor = "initial";
+    };
+  }, [color]); // 依存配列にcurrentColorを指定します。
+
   const changeColor = () => {
     if (color === "white") {
       setColor("red");
     } else {
       setColor("white");
     }
-    document.body.style.backgroundColor = color;
   };
 
   return (
